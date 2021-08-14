@@ -149,7 +149,7 @@ async def on_ready():
 # await channel.send('hello')
 @client.event
 async def on_message(message):
-  gameChannel = client.get_channel(876023807406657536)
+  gameChannel = client.get_channel(my_secret = os.environ['CHANNEL_ID'])
   if(message.author == client.user):
         return
   if gameChannel == message.channel:
