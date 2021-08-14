@@ -149,7 +149,10 @@ async def on_ready():
 # await channel.send('hello')
 @client.event
 async def on_message(message):
-  gameChannel = client.get_channel(my_secret = os.environ['CHANNEL_ID'])
+  # print("Message Channel : {}".format(message.channel))
+  # print(os.environ['CHANNEL_ID'])
+  gameChannel = client.get_channel(int(os.environ['CHANNEL_ID']))
+  # print("gameChannel Channel : {}".format(gameChannel))
   if(message.author == client.user):
         return
   if gameChannel == message.channel:
@@ -182,6 +185,8 @@ async def on_message(message):
     else:
         embedVar = getErrorEmbededData(title="*Error*", description="Invalid Input Detected ! Please enter a valid input. \n ` w ` -> Move Left\n` d ` -> Move Right\n` w ` -> Move Up\n` s ` -> Move Down\n` r ` -> Reset")
         await message.channel.send(embed=embedVar)
+  else:
+    print("Wrong Channel")
         
 @commands.command(name='test')
 async def check(self, ctx):
